@@ -2,6 +2,8 @@
   "name": "wf-code-manager",
   "displayName": "Code Manager",
   "description": "",
+  "publisher": "wf-soft",
+  "icon": "images/logo.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.98.0"
