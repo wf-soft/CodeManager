@@ -36,7 +36,7 @@
     "viewsWelcome": [
       {
         "view": "wf-code-manager",
-        "contents": "还没有设置根目录 [learn more](https://www.npmjs.com/).\n[选择文件夹](command:wf-code-manager.selectDirectory)"
+        "contents": "还没有设置根目录 [learn more](https://github.com/wf-soft/CodeManager).\n[选择文件夹](command:wf-code-manager.selectDirectory)"
       }
     ],
     "menus": {
