@@ -1,0 +1,14 @@
+{
+  "Select Directory": "选择目录",
+  "Enter file name": "请输入文件名",
+  "Enter folder name": "请输入文件夹名称",
+  "Folder name": "文件夹名称",
+  "Enter name": "请输入名称",
+  "Are you sure you want to delete the selected item?": "是否确认删除选中的项？",
+  "Confirm Delete": "确认删除",
+  "The Code Runner extension is not installed. Do you want to install it now?": "扩展 Code Runner 未安装，是否立即安装？",
+  "Yes": "是",
+  "No": "否",
+  "The Code Runner extension has been installed.": "扩展 Code Runner 已安装。",
+  "No folder selected.": "没有选择目录."
+}

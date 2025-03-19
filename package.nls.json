@@ -1,0 +1,19 @@
+{
+  "extension.description": "Manage your code efficiently",
+  "view.title": "Code Manager",
+  "command.runCode": "Run Code",
+  "command.selectDirectory": "Set Directory",
+  "command.refreshTreeView": "Refresh",
+  "command.openFile": "Open File",
+  "command.newFile": "New File...",
+  "command.newFolder": "New Folder...",
+  "command.renameFile": "Rename...",
+  "command.deleteFiles": "Delete",
+  "command.revealInExplorer": "Reveal in Explorer",
+  "command.openTerminalAtFile": "Open in Integrated Terminal",
+  "command.openInNewWindow": "Open Folder in New Window",
+  "command.copyPath": "Copy Path",
+  "viewWelcome.contents": "No root directory set [learn more](https://github.com/wf-soft/CodeManager).\n[Select Folder](command:wf-code-manager.selectDirectory)",
+  "configuration.title": "Run Code configuration",
+  "configuration.rootPath.description": "Root directory"
+}

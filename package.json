@@ -1,7 +1,7 @@
 {
   "name": "wf-code-manager",
   "displayName": "Code Manager",
-  "description": "",
+  "description": "%extension.description%",
   "publisher": "wf-soft",
   "icon": "images/logo.png",
   "version": "1.0.5",
@@ -13,12 +13,13 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
+  "l10n": "./l10n",
   "contributes": {
     "viewsContainers": {
       "activitybar": [
         {
           "id": "wf-code-manager",
-          "title": "代码管理",
+          "title": "%view.title%",
           "icon": "images/dark/logo.svg"
         }
       ]
@@ -27,7 +28,7 @@
       "wf-code-manager": [
         {
           "id": "wf-code-manager",
-          "name": "",
+          "name": "%view.title%",
           "icon": "images/dark/logo.svg"
         }
       ]
@@ -35,7 +36,7 @@
     "viewsWelcome": [
       {
         "view": "wf-code-manager",
-        "contents": "还没有设置根目录 [learn more](https://github.com/wf-soft/CodeManager).\n[选择文件夹](command:wf-code-manager.selectDirectory)"
+        "contents": "%viewWelcome.contents%"
       }
     ],
     "menus": {
@@ -122,7 +123,7 @@
     "commands": [
       {
         "command": "wf-code-manager.runCode",
-        "title": "运行代码",
+        "title": "%command.runCode%",
         "icon": {
           "dark": "images/dark/run.svg",
           "light": "images/light/run.svg"
@@ -130,7 +131,7 @@
       },
       {
         "command": "wf-code-manager.selectDirectory",
-        "title": "设置目录",
+        "title": "%command.selectDirectory%",
         "icon": {
           "dark": "images/dark/settings.svg",
           "light": "images/light/settings.svg"
@@ -138,7 +139,7 @@
       },
       {
         "command": "wf-code-manager.refreshTreeView",
-        "title": "刷新",
+        "title": "%command.refreshTreeView%",
         "icon": {
           "dark": "images/dark/refresh.svg",
           "light": "images/light/refresh.svg"
@@ -146,11 +147,11 @@
       },
       {
         "command": "wf-code-manager.openFile",
-        "title": "打开文件"
+        "title": "%command.openFile%"
       },
       {
         "command": "wf-code-manager.newFile",
-        "title": "新建文件...",
+        "title": "%command.newFile%",
         "icon": {
           "dark": "images/dark/file-add-line.svg",
           "light": "images/light/file-add-line.svg"
@@ -158,7 +159,7 @@
       },
       {
         "command": "wf-code-manager.newFolder",
-        "title": "新建目录...",
+        "title": "%command.newFolder%",
         "icon": {
           "dark": "images/dark/folder-add-line.svg",
           "light": "images/light/folder-add-line.svg"
@@ -166,38 +167,38 @@
       },
       {
         "command": "wf-code-manager.renameFile",
-        "title": "重命名..."
+        "title": "%command.renameFile%"
       },
       {
         "command": "wf-code-manager.deleteFiles",
-        "title": "删除"
+        "title": "%command.deleteFiles%"
       },
       {
         "command": "wf-code-manager.revealInExplorer",
-        "title": "在资源管理器显示"
+        "title": "%command.revealInExplorer%"
       },
       {
         "command": "wf-code-manager.openTerminalAtFile",
-        "title": "在集成终端中打开"
+        "title": "%command.openTerminalAtFile%"
       },
       {
         "command": "wf-code-manager.openInNewWindow",
-        "title": "在新窗口打开目录"
+        "title": "%command.openInNewWindow%"
       },
       {
         "command": "wf-code-manager.copyPath",
-        "title": "复制路径"
+        "title": "%command.copyPath%"
       }
     ]
   },
   "configuration": {
     "type": "object",
-    "title": "Run Code configuration",
+    "title": "%configuration.title%",
     "properties": {
       "wf-code-manager.rootPath": {
         "type": "string",
         "default": "",
-        "description": "根目录",
+        "description": "%configuration.rootPath.description%",
         "scope": "resource"
       }
     }
@@ -214,17 +215,21 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.98.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.98.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
-    "eslint": "^9.21.0",
-    "typescript": "^5.7.3",
-    "ts-loader": "^9.5.2",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1",
+    "@vscode/l10n-dev": "^0.0.35",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.21.0",
+    "ts-loader": "^9.5.2",
+    "typescript": "^5.7.3",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18"
   }
 }
