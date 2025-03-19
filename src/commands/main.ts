@@ -32,7 +32,7 @@ export function activate(context: vscode.ExtensionContext) {
         canSelectFiles: false,
         canSelectFolders: true,
         canSelectMany: false,
-        openLabel: "Select Folder",
+        openLabel: "选择目录",
       });
 
       if (selectedFolder && selectedFolder.length > 0) {
@@ -74,7 +74,7 @@ export function activate(context: vscode.ExtensionContext) {
     },
     "wf-code-manager.renameFile": async (item: FileTreeItem) => {
       const newName = await vscode.window.showInputBox({
-        prompt: "Enter new name",
+        prompt: "请输入名称",
         value: path.basename(item.filePath),
       });
       if (newName) {
@@ -96,21 +96,33 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
 
+      const extensionId = "formulahendry.code-runner";
       // 检查 Code Runner 扩展是否已安装
-      const codeRunnerExtension = vscode.extensions.getExtension(
-        "formulahendry.code-runner"
-      );
+      let codeRunnerExtension = vscode.extensions.getExtension(extensionId);
       if (!codeRunnerExtension) {
-        vscode.window.showErrorMessage(
-          "Code Runner extension is not installed. Please install it first."
+        // 如果扩展未安装，则提示用户安装
+        const install = await vscode.window.showInformationMessage(
+          `扩展 Code Runner 未安装，是否立即安装？`,
+          "是",
+          "否"
         );
-        return;
+        if (install === "是") {
+          // 安装扩展
+          await vscode.commands.executeCommand(
+            "workbench.extensions.installExtension",
+            extensionId
+          );
+          vscode.window.showInformationMessage(`扩展 Code Runner 已安装。`);
+        } else {
+          return;
+        }
       }
 
-      // 确保 Code Runner 扩展已激活
-      if (!codeRunnerExtension.isActive) {
-        await codeRunnerExtension.activate();
-      }
+      // // 确保 Code Runner 扩展已激活
+      // codeRunnerExtension = vscode.extensions.getExtension(extensionId);
+      // if (!codeRunnerExtension.isActive) {
+      //   await codeRunnerExtension.activate();
+      // }
 
       // 调用 Code Runner 的 Run Code 命令，并传递文件路径
       await vscode.commands.executeCommand(
@@ -136,7 +148,7 @@ export function activate(context: vscode.ExtensionContext) {
           : path.dirname(item.filePath);
       }
       if (!folderPath) {
-        vscode.window.showErrorMessage("No folder selected.");
+        vscode.window.showErrorMessage("没有选择目录.");
         return;
       }
 
@@ -151,6 +163,16 @@ export function activate(context: vscode.ExtensionContext) {
             terminal.sendText(`cd "${folderPath}"`);
           }
         });
+    },
+    "wf-code-manager.openInNewWindow": (item: FileTreeItem) => {
+      vscode.commands.executeCommand(
+        "vscode.openFolder",
+        item.resourceUri,
+        true
+      );
+    },
+    "wf-code-manager.copyPath": (item: FileTreeItem) => {
+      vscode.env.clipboard.writeText(item.filePath);
     },
   });
 }

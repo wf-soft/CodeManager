@@ -13,9 +13,6 @@
   ],
   "activationEvents": [],
   "main": "./dist/extension.js",
-  "extensionDependencies": [
-    "formulahendry.code-runner"
-  ],
   "contributes": {
     "viewsContainers": {
       "activitybar": [
@@ -81,6 +78,11 @@
           "group": "2_navigation@2"
         },
         {
+          "command": "wf-code-manager.openInNewWindow",
+          "when": "view == wf-code-manager && viewItem == folder",
+          "group": "2_navigation@3"
+        },
+        {
           "command": "wf-code-manager.openFile",
           "when": "view == wf-code-manager && viewItem =~ /file/",
           "group": "3_navigation@1"
@@ -96,14 +98,19 @@
           "group": "3_navigation@3"
         },
         {
-          "command": "wf-code-manager.renameFile",
+          "command": "wf-code-manager.copyPath",
           "when": "view == wf-code-manager && viewItem =~ /file|folder/",
           "group": "4_navigation@1"
         },
         {
+          "command": "wf-code-manager.renameFile",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "5_navigation@1"
+        },
+        {
           "command": "wf-code-manager.deleteFiles",
           "when": "view == wf-code-manager && viewItem =~ /file|folder/",
-          "group": "4_navigation@2"
+          "group": "5_navigation@2"
         }
       ]
     },
@@ -130,7 +137,7 @@
       },
       {
         "command": "wf-code-manager.newFile",
-        "title": "新建文件",
+        "title": "新建文件...",
         "icon": {
           "dark": "images/dark/file-add-line.svg",
           "light": "images/light/file-add-line.svg"
@@ -138,7 +145,7 @@
       },
       {
         "command": "wf-code-manager.newFolder",
-        "title": "新建目录",
+        "title": "新建目录...",
         "icon": {
           "dark": "images/dark/folder-add-line.svg",
           "light": "images/light/folder-add-line.svg"
@@ -146,7 +153,7 @@
       },
       {
         "command": "wf-code-manager.renameFile",
-        "title": "重命名"
+        "title": "重命名..."
       },
       {
         "command": "wf-code-manager.deleteFiles",
@@ -159,6 +166,14 @@
       {
         "command": "wf-code-manager.openTerminalAtFile",
         "title": "在集成终端中打开"
+      },
+      {
+        "command": "wf-code-manager.openInNewWindow",
+        "title": "在新窗口打开目录"
+      },
+      {
+        "command": "wf-code-manager.copyPath",
+        "title": "复制路径"
       }
     ]
   },
