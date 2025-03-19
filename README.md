@@ -1,6 +1,4 @@
-# Code Manager README
-
-This is the README for your extension "Code Manager". After writing up a brief description, we recommend including the following sections.
+# Code Manager
 
 ## Features
 

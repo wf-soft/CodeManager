@@ -99,7 +99,7 @@
           "group": "4_navigation@1"
         },
         {
-          "command": "wf-code-manager.deleteFile",
+          "command": "wf-code-manager.deleteFiles",
           "when": "view == wf-code-manager && viewItem =~ /file|folder/",
           "group": "4_navigation@2"
         }
@@ -147,7 +147,7 @@
         "title": "重命名"
       },
       {
-        "command": "wf-code-manager.deleteFile",
+        "command": "wf-code-manager.deleteFiles",
         "title": "删除"
       },
       {

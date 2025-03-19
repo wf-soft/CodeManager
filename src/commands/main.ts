@@ -81,13 +81,13 @@ export function activate(context: vscode.ExtensionContext) {
         fileTreeDataProvider.rename(item, newName);
       }
     },
-    "wf-code-manager.deleteFile": async (item: FileTreeItem) => {
+    "wf-code-manager.deleteFiles": async (item: FileTreeItem) => {
       const confirm = await vscode.window.showWarningMessage(
-        `Are you sure you want to delete ${path.basename(item.filePath)}?`,
+        `是否确认删除选中的项？`,
         { modal: true },
-        "Delete"
+        "确认删除"
       );
-      if (confirm === "Delete") {
+      if (confirm === "确认删除") {
         fileTreeDataProvider.delete(item);
       }
     },
