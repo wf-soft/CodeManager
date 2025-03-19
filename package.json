@@ -231,5 +231,16 @@
   },
   "dependencies": {
     "@vscode/l10n": "^0.0.18"
-  }
+  },
+  "localizations": [
+    {
+      "languageId": "zh-cn",
+      "translations": [
+        {
+          "id": "package",
+          "path": "./package.nls.zh-cn.json"
+        }
+      ]
+    }
+  ]
 }
