@@ -41,19 +41,24 @@
     "menus": {
       "view/title": [
         {
-          "command": "wf-code-manager.newFile",
+          "command": "wf-code-manager.refreshTreeView",
           "when": "view == wf-code-manager",
           "group": "navigation@1"
         },
         {
-          "command": "wf-code-manager.newFolder",
+          "command": "wf-code-manager.newFile",
           "when": "view == wf-code-manager",
           "group": "navigation@2"
         },
         {
-          "command": "wf-code-manager.selectDirectory",
+          "command": "wf-code-manager.newFolder",
           "when": "view == wf-code-manager",
           "group": "navigation@3"
+        },
+        {
+          "command": "wf-code-manager.selectDirectory",
+          "when": "view == wf-code-manager",
+          "group": "navigation@4"
         }
       ],
       "view/item/context": [
@@ -129,6 +134,14 @@
         "icon": {
           "dark": "images/dark/settings.svg",
           "light": "images/light/settings.svg"
+        }
+      },
+      {
+        "command": "wf-code-manager.refreshTreeView",
+        "title": "刷新",
+        "icon": {
+          "dark": "images/dark/refresh.svg",
+          "light": "images/light/refresh.svg"
         }
       },
       {
