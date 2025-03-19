@@ -1,0 +1,200 @@
+{
+  "name": "wf-code-manager",
+  "displayName": "Code Manager",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.98.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "extensionDependencies": [
+    "formulahendry.code-runner"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "wf-code-manager",
+          "title": "代码管理",
+          "icon": "images/dark/logo.svg"
+        }
+      ]
+    },
+    "views": {
+      "wf-code-manager": [
+        {
+          "id": "wf-code-manager",
+          "name": "",
+          "icon": "images/dark/logo.svg"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "wf-code-manager",
+        "contents": "还没有设置根目录 [learn more](https://www.npmjs.com/).\n[选择文件夹](command:wf-code-manager.selectDirectory)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "wf-code-manager.newFile",
+          "when": "view == wf-code-manager",
+          "group": "navigation@1"
+        },
+        {
+          "command": "wf-code-manager.newFolder",
+          "when": "view == wf-code-manager",
+          "group": "navigation@2"
+        },
+        {
+          "command": "wf-code-manager.selectDirectory",
+          "when": "view == wf-code-manager",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "wf-code-manager.runCode",
+          "when": "view == wf-code-manager && viewItem =~ /file/ && editorLangId != ''",
+          "group": "1_navigation"
+        },
+        {
+          "command": "wf-code-manager.runCode",
+          "when": "view == wf-code-manager && viewItem =~ /file/ && editorLangId != ''",
+          "group": "inline"
+        },
+        {
+          "command": "wf-code-manager.revealInExplorer",
+          "when": "view == wf-code-manager",
+          "group": "2_navigation@1"
+        },
+        {
+          "command": "wf-code-manager.openTerminalAtFile",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "2_navigation@2"
+        },
+        {
+          "command": "wf-code-manager.openFile",
+          "when": "view == wf-code-manager && viewItem =~ /file/",
+          "group": "3_navigation@1"
+        },
+        {
+          "command": "wf-code-manager.newFile",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "3_navigation@2"
+        },
+        {
+          "command": "wf-code-manager.newFolder",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "3_navigation@3"
+        },
+        {
+          "command": "wf-code-manager.renameFile",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "4_navigation@1"
+        },
+        {
+          "command": "wf-code-manager.deleteFile",
+          "when": "view == wf-code-manager && viewItem =~ /file|folder/",
+          "group": "4_navigation@2"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "wf-code-manager.runCode",
+        "title": "运行代码",
+        "icon": {
+          "dark": "images/dark/run.svg",
+          "light": "images/light/run.svg"
+        }
+      },
+      {
+        "command": "wf-code-manager.selectDirectory",
+        "title": "设置目录",
+        "icon": {
+          "dark": "images/dark/settings.svg",
+          "light": "images/light/settings.svg"
+        }
+      },
+      {
+        "command": "wf-code-manager.openFile",
+        "title": "打开文件"
+      },
+      {
+        "command": "wf-code-manager.newFile",
+        "title": "新建文件",
+        "icon": {
+          "dark": "images/dark/file-add-line.svg",
+          "light": "images/light/file-add-line.svg"
+        }
+      },
+      {
+        "command": "wf-code-manager.newFolder",
+        "title": "新建目录",
+        "icon": {
+          "dark": "images/dark/folder-add-line.svg",
+          "light": "images/light/folder-add-line.svg"
+        }
+      },
+      {
+        "command": "wf-code-manager.renameFile",
+        "title": "重命名"
+      },
+      {
+        "command": "wf-code-manager.deleteFile",
+        "title": "删除"
+      },
+      {
+        "command": "wf-code-manager.revealInExplorer",
+        "title": "在资源管理器显示"
+      },
+      {
+        "command": "wf-code-manager.openTerminalAtFile",
+        "title": "在集成终端中打开"
+      }
+    ]
+  },
+  "configuration": {
+    "type": "object",
+    "title": "Run Code configuration",
+    "properties": {
+      "wf-code-manager.rootPath": {
+        "type": "string",
+        "default": "",
+        "description": "根目录",
+        "scope": "resource"
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.98.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^9.21.0",
+    "typescript": "^5.7.3",
+    "ts-loader": "^9.5.2",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
