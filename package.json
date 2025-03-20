@@ -4,7 +4,7 @@
   "description": "%extension.description%",
   "publisher": "wf-soft",
   "icon": "images/logo.png",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "license": "MIT",
   "repository": {
     "type": "git",
