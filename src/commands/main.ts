@@ -26,6 +26,28 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   CommandsBase.register(context, {
+    "wf-code-manager.checkLanguage": async () => {
+      // 获取当前语言
+      const currentLanguage = vscode.env.language;
+      if (currentLanguage === "zh-cn") {
+        const globalState = context.globalState;
+        const isFirstInstall = !globalState.get("installed");
+        if (isFirstInstall) {
+          await globalState.update("installed", true);
+          const reload = "重新加载窗口";
+          const result = await vscode.window.showInformationMessage(
+            "为了正确显示中文菜单，需要重新加载窗口。",
+            reload
+          );
+
+          if (result === reload) {
+            await vscode.commands.executeCommand(
+              "workbench.action.reloadWindow"
+            );
+          }
+        }
+      }
+    },
     "wf-code-manager.selectDirectory": async () => {
       const selectedFolder = await vscode.window.showOpenDialog({
         canSelectFiles: false,
