@@ -11,7 +11,7 @@
     "url": "https://github.com/wf-soft/CodeManager"
   },
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.56.0"
   },
   "categories": [
     "Other"
@@ -239,7 +239,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "1.85.0",
+    "@types/vscode": "1.56.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
     "@typescript-eslint/parser": "^8.25.0",
     "@vscode/test-cli": "^0.0.10",
