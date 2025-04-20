@@ -129,7 +129,15 @@ export class FileTreeDataProvider
     }
     const filePath = path.join(folderPath, fileName);
     try {
-      await fs.promises.writeFile(filePath, "");
+      if (path.extname(filePath).toLowerCase() === ".ps1") {
+        const bom = Buffer.from([0xef, 0xbb, 0xbf]);
+        const emptyBuffer = Buffer.concat([bom, Buffer.from("", "utf8")]);
+        await fs.promises.writeFile(filePath, emptyBuffer, {
+          encoding: "utf8",
+        });
+      } else {
+        await fs.promises.writeFile(filePath, "");
+      }
       const dirNode = node?.isDirectory ? node : node?.parent;
       this.refresh(dirNode);
       if (dirNode) {
